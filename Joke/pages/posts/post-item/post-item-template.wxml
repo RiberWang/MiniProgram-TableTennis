@@ -1,0 +1,19 @@
+<template name="postItem">
+  <view class='post-container'>
+    <view class='author-bg'>
+      <image class='author-avatar' src='{{img.user_avatar}}'></image>
+      <text class='author-date'>{{"Riber    "+date}} {{index}}</text>
+    </view>
+    <text class='content-title'>{{title}}</text>
+    <image wx:if="{{image_condition}}" class='content-image' src='{{img.content_image}}'>
+    </image>
+    <text class='content-text'>{{content}}
+    </text>
+    <view class='post-like'>
+      <image class='post-like-image' src='../../images/wx_app_message.png'></image>
+      <text class='post-like-count'>{{comment_count}}</text>
+      <image class='post-like-image' src='../../images/wx_app_view.png'></image>
+      <text class='post-like-count'>{{view_count}}</text>
+    </view>
+  </view>
+</template>

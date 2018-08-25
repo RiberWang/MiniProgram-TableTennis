@@ -1,0 +1,25 @@
+<!-- 注意引入template时(模板不是真正的模块化) 后面有个反斜杠 路径使用绝对路径是可以的 有可能在同一目录下 未知-->
+<!-- <import src="post-item/post-item-template.wxml" /> -->
+<import src="/pages/posts/post-item/post-item-template.wxml" />
+
+<view>
+  <swiper vertical='{{false}}' class='banner' indicator-dots='true' autoplay='true' interval='1000'>
+    <swiper-item>
+      <image src='https://img.alicdn.com/simba/img/TB1xex6I7OWBuNjSsppSutPgpXa.jpg'>
+      </image>
+    </swiper-item>
+    <swiper-item>
+      <image src='https://img.alicdn.com/tfs/TB18mVfJ7SWBuNjSszdXXbeSpXa-520-280.png_q90'>
+      </image>
+    </swiper-item>
+    <swiper-item>
+      <image src='https://img.alicdn.com/simba/img/TB1.y47JxGYBuNjy0FnSut5lpXa.jpg'>
+      </image>
+    </swiper-item>
+  </swiper>
+  <block wx:for="{{postList}}" wx:for-item="item" wx:for-index="index">
+  <view catchtap='onPostTap' data-postid="{{item.postId}}">
+    <template is="postItem" data="{{...item}}" />
+  </view>
+  </block>
+</view>
