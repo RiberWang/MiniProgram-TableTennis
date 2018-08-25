@@ -11,8 +11,8 @@
 .play-image {
   position: absolute;
   background-color:black;
-  width: 102rpx;
-  height: 110rpx;
+  width: 100rpx;
+  height: 100rpx;
   left: 50%;
   margin-left: -51rpx;
   top: 115rpx;

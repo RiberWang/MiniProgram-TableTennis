@@ -1,6 +1,6 @@
 <view class='container'>
-  <image class='header-image' src='{{postData.headImg}}'></image>
-  <image class='play-image' src='/images/wx_app_music_start.png'></image>
+  <image class='header-image' src="{{isPlay?postData.music.coverImgUrl:postData.headImg}}"></image>
+  <image catchtap='playTap' class='play-image' src="{{isPlay?'/images/wx_pause.png':'/images/wx_play.png'}}"></image>
   <view class='author-date'>
     <image class='avatar' src='{{postData.img.user_avatar}}'></image>
     <text class='author'>{{postData.author}}</text>

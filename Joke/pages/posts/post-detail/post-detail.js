@@ -1,4 +1,5 @@
 var postsData = require("../../../data/post-data.js")
+var app = getApp();
 
 Page({
 
@@ -6,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isPlay: false,
   },
 
   /**
@@ -33,9 +34,77 @@ Page({
       postColected[postId] = false;
       wx.setStorageSync("post_collected", postColected);
     }
+
+    if (app.globalData.g_play && app.globalData.g_currentPostId == postId) {
+      this.setData({
+        isPlay: true
+      });
+    }
+    this.setMusicStatus();
+  },
+
+  setMusicStatus: function() {
+    var that = this;
+    wx.onBackgroundAudioPlay(function() {
+      that.setData({
+        isPlay: true
+      });
+      app.globalData.g_play = true;
+      app.globalData.g_currentPostId = that.data.currentPostId;
+    });
+    wx.onBackgroundAudioPause(function() {
+      that.setData({
+        isPlay: false
+      });
+      app.globalData.g_play = false;
+      app.globalData.g_currentPostId = null;
+    });
+  },
+
+  playTap: function(event) {
+    var currentPostId = this.data.currentPostId;
+    var postData = postsData.postList[currentPostId];
+    var isPlay = this.data.isPlay;
+
+    if (isPlay) {
+      wx.pauseBackgroundAudio();
+      this.setData({
+        isPlay: false
+      });
+      // this.data.isPlay = false;
+    } else {
+      wx.playBackgroundAudio({
+        dataUrl: postData.music.dataUrl,
+        title: postData.music.title,
+        coverImgUrl: postData.music.coverImgUrl,
+      });
+      this.setData({
+        isPlay: true
+      });
+    }
   },
 
   onCollection: function(event) {
+    this.getPostCollectedSync();
+  },
+
+  // 异步方法
+  getPostCollected: function() {
+    var that = this;
+    wx.getStorage({
+      key: 'post_collected',
+      success: function(res) {
+        var postCollected = res.data;
+        var selected = postCollected[that.data.currentPostId];
+        selected = !selected;
+        postCollected[that.data.currentPostId] = selected;
+        that.showToast(postCollected, selected);
+      },
+    });
+  },
+
+  // 同步方法
+  getPostCollectedSync() {
     var postCollected = wx.getStorageSync("post_collected");
     var selected = postCollected[this.data.currentPostId];
     selected = !selected;
@@ -90,7 +159,7 @@ Page({
 
 
 
-  showToast: function (postCollected, selected) {
+  showToast: function(postCollected, selected) {
     wx.setStorageSync("post_collected", postCollected);
     this.setData({
       collected: selected

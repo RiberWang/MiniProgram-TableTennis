@@ -10,9 +10,9 @@
     <text class='content-text'>{{content}}
     </text>
     <view class='post-like'>
-      <image class='post-like-image' src='../../images/wx_app_message.png'></image>
+      <image class='post-like-image' src='/images/wx_app_message.png'></image>
       <text class='post-like-count'>{{comment_count}}</text>
-      <image class='post-like-image' src='../../images/wx_app_view.png'></image>
+      <image class='post-like-image' src='/images/wx_app_view.png'></image>
       <text class='post-like-count'>{{view_count}}</text>
     </view>
   </view>
