@@ -7,21 +7,6 @@ Page({
     
   },
 
-  startContainerTap:function(event) {
-    // wx.navigateTo({
-    //   url: '../posts/post',
-    // })
-    // wx.redirectTo({
-    //   url: '../posts/post',
-    // })
-    wx.switchTab({
-      url: '../posts/post',
-    })
-    console.log("startContainerTap onTap");
-  },
-  textSubTap: function (event) {
-    console.log("textSubTap onTap");
-  },
   /**
    * 生命周期函数--监听页面加载
    */

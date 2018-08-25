@@ -3,17 +3,17 @@
 <import src="/pages/posts/post-item/post-item-template.wxml" />
 
 <view>
-  <swiper vertical='{{false}}' class='banner' indicator-dots='true' autoplay='true' interval='1000'>
+  <swiper catchtap='onSwiperTap' vertical='{{false}}' class='banner' indicator-dots='true' autoplay='true' interval='1000'>
     <swiper-item>
-      <image src='https://img.alicdn.com/simba/img/TB1xex6I7OWBuNjSsppSutPgpXa.jpg'>
+      <image data-postid = "3" src='https://img.alicdn.com/simba/img/TB1xex6I7OWBuNjSsppSutPgpXa.jpg'>
       </image>
     </swiper-item>
     <swiper-item>
-      <image src='https://img.alicdn.com/tfs/TB18mVfJ7SWBuNjSszdXXbeSpXa-520-280.png_q90'>
+      <image data-postid = "4" src='https://img.alicdn.com/tfs/TB18mVfJ7SWBuNjSszdXXbeSpXa-520-280.png_q90'>
       </image>
     </swiper-item>
     <swiper-item>
-      <image src='https://img.alicdn.com/simba/img/TB1.y47JxGYBuNjy0FnSut5lpXa.jpg'>
+      <image data-postid = "5" src='https://img.alicdn.com/simba/img/TB1.y47JxGYBuNjy0FnSut5lpXa.jpg'>
       </image>
     </swiper-item>
   </swiper>

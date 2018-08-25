@@ -1,8 +1,10 @@
 {
 "pages": [
+  "pages/welcome/wecome",
   "pages/posts/post",
   "pages/posts/post-detail/post-detail",
-  "pages/welcome/wecome"
+
+  "pages/movies/movie"
 ],
 "window": {
   "navigationBarBackgroundColor": "#FFFFFF",
@@ -11,6 +13,24 @@
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": false
+},
+"tabBar": {
+  "borderStyle": "white",
+  "position": "bottom",
+  "list": [
+    {
+      "pagePath": "pages/posts/post",
+      "text": "文章",
+      "iconPath": "/images/wx_app_news.png",
+      "selectedIconPath": "/images/wx_app_news@HL.png"
+    },
+    {
+      "pagePath": "pages/movies/movie",
+      "text": "电影",
+            "iconPath": "/images/wx_app_movie.png",
+            "selectedIconPath": "/images/wx_app_movie@HL.png"
+    }
+  ]
 }
 
 }
