@@ -1,0 +1,15 @@
+<import src="movie-list/movie-list-template.wxml" />
+
+<view class='container'>
+<view class="movies-template">
+<template is="movieListTemplate" data="{{...intheater, type:'正在热映'}}" />
+</view>
+
+<view class="movies-template">
+<template is="movieListTemplate" data="{{...comingsoon, type:'即将上映'}}" />
+</view>
+
+<view class="movies-template">
+<template is="movieListTemplate" data="{{...top250, type:'Top250'}}" />
+</view>
+</view>

@@ -1,0 +1,46 @@
+@import "../movie/movie-template.wxss";
+
+.movie-list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.inner-container {
+  margin: 0 auto 20rpx;
+}
+
+/* 上30 左右20 下22 */
+.movie-header {
+  padding: 30rpx 20rpx 22rpx;
+  /* .more不使用float 也可以使用一下方法 水平居中的话需要微调元素（.movie-hot margin-top: 10rpx;）*/
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between; */
+}
+
+.movie-hot {
+  font-size: 24rpx;
+  /* margin-top: 10rpx; */
+}
+
+.more {
+  float: right;
+}
+
+.more-text {
+  vertical-align: middle;
+  margin-right: 10rpx;
+  color: #1f4ba5;
+}
+
+.more-img {
+  width: 9rpx;
+  height: 16rpx;
+  vertical-align: middle;
+}
+
+.movie-template-container {
+  display: flex;
+  flex-direction: row;
+}

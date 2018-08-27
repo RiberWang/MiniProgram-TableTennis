@@ -1,7 +1,8 @@
 App({
   globalData: {
     g_play: false,
-    g_currentPostId: null 
+    g_currentPostId: null,
+    doubanBase: "https://douban.uieee.com/"
   },
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
