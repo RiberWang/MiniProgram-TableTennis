@@ -3,7 +3,8 @@
     "pages/posts/post",
     "pages/welcome/wecome",
     "pages/posts/post-detail/post-detail",
-    "pages/movies/movie"
+    "pages/movies/movie",
+    "pages/movies/movie-more/movie-more"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",

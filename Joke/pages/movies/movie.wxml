@@ -10,6 +10,6 @@
 </view>
 
 <view class="movies-template">
-<template is="movieListTemplate" data="{{...top250, type:'Top250'}}" />
+<template is="movieListTemplate" data="{{...top250, type:'豆瓣Top250'}}" />
 </view>
 </view>

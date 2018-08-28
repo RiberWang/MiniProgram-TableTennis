@@ -16,7 +16,7 @@ Page({
    */
   onLoad: function (options) {
     // 粒度
-    var inTheaterUrl = app.globalData.doubanBase+  "v2/movie/in_theaters?start=2&count=3";
+    var inTheaterUrl = app.globalData.doubanBase+  "v2/movie/in_theaters?start=1&count=3";
     var comingSoonUrl = app.globalData.doubanBase + "/v2/movie/coming_soon?start=0&count=3";
     var top250Url = app.globalData.doubanBase +"/v2/movie/top250?start=0&count=3";
     
@@ -31,7 +31,7 @@ Page({
       url: url,
       method: "GET",
       header: {
-        'content-type': 'application/xml'
+        'content-type': 'json'
       },
       success: function (res) {
         console.log(res);
@@ -73,6 +73,13 @@ Page({
     this.setData(totalData);
   },
 
+  onMoreTap: function (event) {
+    console.log(event);
+    var category = event.currentTarget.dataset.category;
+    wx.navigateTo({
+      url: 'movie-more/movie-more?category='+category,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -85,7 +92,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+ 
   },
 
   /**

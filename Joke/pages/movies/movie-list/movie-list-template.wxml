@@ -4,7 +4,7 @@
     <view class='inner-container'>
       <view class='movie-header'>
         <text class='movie-hot'>{{type}}</text>
-        <view class='more'>
+        <view class='more' catchtap='onMoreTap' data-category="{{type}}">
           <text class='more-text'>更多</text>
           <image class='more-img' src='/images/wx_app_arrow_right.png'></image>
         </view>
