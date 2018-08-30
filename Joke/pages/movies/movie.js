@@ -81,7 +81,6 @@ Page({
     });
   },
 
-
   onBindFocus: function() {
     this.setData({
       containerShow:false,
@@ -97,6 +96,12 @@ Page({
   },
 
   onBindBlur: function(event) {
+    // var text = event.detail.value;
+    // var searchUrl = app.globalData.doubanBase + "v2/movie/search?q=" + text;
+    // this.getMovieListData(searchUrl, "searchResult");
+  },
+
+  onBindConfim: function (event) {
     var text = event.detail.value;
     var searchUrl = app.globalData.doubanBase + "v2/movie/search?q=" + text;
     this.getMovieListData(searchUrl, "searchResult");
@@ -111,7 +116,6 @@ Page({
   },
 
   onMovieTap: function(event) {
-
     var movieId = event.currentTarget.dataset.movieid;
     wx.navigateTo({
       url: 'movie-detail/movie-detail?id=' + movieId,

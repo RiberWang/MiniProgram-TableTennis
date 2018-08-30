@@ -10,7 +10,8 @@ Page({
   data: {
     requestUrl: "",
     totalCount: 0,
-    isEmpty:true
+    isEmpty:true,
+    movies: []
   },
 
   /**
@@ -53,7 +54,7 @@ Page({
     console.log("下拉刷新");
     var nextUrl = this.data.requestUrl + "?start=0&count=20";
     this.data.totalCount = 0;
-    this.data.movies = {};
+    this.data.movies = [];
     this.data.isEmpty = true;
     util.http(nextUrl, this.callBack);
     wx.showNavigationBarLoading();
@@ -86,13 +87,12 @@ Page({
 
       movies.push(temp);
     }
-    var totalMovies = {};
+    var totalMovies = [];
     if(this.data.isEmpty) {
       totalMovies = movies;
       this.data.isEmpty = false;
     }
     else {
-      totalMovies = {};
       totalMovies = this.data.movies.concat(movies);
     }
     this.setData({
@@ -102,6 +102,13 @@ Page({
     this.data.totalCount += 20;
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
+  },
+
+  onMovieTap: function (event) {
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId,
+    });
   },
 
   /**

@@ -51,7 +51,7 @@ Page({
       generes: data.genres.join("、"),
       stars: util.starsArray(data.rating.stars),
       score: data.rating.average,
-      director: director,
+      director: director.name,
       casts: util.convertToCastString(data.casts),
       castsInfo: util.convertToCastInfos(data.casts),
       summary: data.summary
@@ -64,6 +64,15 @@ Page({
     wx.setNavigationBarTitle({
       title: data.title
     });
+  },
+
+// 查看图片
+  photobrowserTap: function(event) {
+    var src = event.currentTarget.dataset.src;
+    wx.previewImage({
+      current: src, // 不填则默认为 urls 的第一张
+      urls: [src],
+    })
   },
 
   /**

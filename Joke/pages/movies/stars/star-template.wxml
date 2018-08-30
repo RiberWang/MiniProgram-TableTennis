@@ -1,7 +1,7 @@
 <template name="starTemplate">
   <view class='stars-container'>
     <view class='stars'>
-    <block wx:for="{{star}}" wx:for-item="i">
+    <block wx:key="score" wx:for="{{star}}" wx:for-item="i">
       <image wx:if="{{i==1}}"  src='/images/wx_app_star.png'></image>
       <image wx:elif="{{i==0.5}}"  src='/images/wx_app_star@half.png'></image>
       <image wx:else src='/images/wx_app_star@none.png'></image>
@@ -13,6 +13,7 @@
       <image src='/images/wx_app_star.png'></image> -->
     </view>
 
-    <text class='star-score'>{{score}}</text>
+    <text wx:if="{{score==0}}" class="star-zeroscore">暂无评分</text>
+    <text wx:else class="star-score">{{score}}</text>
   </view>
 </template>

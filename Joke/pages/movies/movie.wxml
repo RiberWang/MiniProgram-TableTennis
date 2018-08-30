@@ -3,7 +3,7 @@
 
 <view class='search'>
 <icon class='search-img' type='search' size='13' color='#405f80'></icon>
-<input type='text' placeholder='请输入搜索的电影' placeholder-style='placehoder' bindfocus='onBindFocus' bindchange="onBindChange" bindblur='onBindBlur' value='{{searchText}}'></input>
+<input type='text' placeholder='请输入搜索的电影' placeholder-style='placehoder' bindfocus='onBindFocus' bindconfirm='onBindConfim' bindchange="onBindChange" bindblur='onBindBlur' value='{{searchText}}'></input>
 <image class='cancel-img' wx:if="{{searchPanelShow}}" src='/images/wx_app_cancel.png' catchtap='cancel'></image>
 </view>
 <view class='container' wx:if="{{containerShow}}">

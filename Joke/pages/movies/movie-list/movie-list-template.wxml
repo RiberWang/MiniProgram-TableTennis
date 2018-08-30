@@ -1,4 +1,5 @@
 <import src="../movie/movie-template.wxml" />
+
 <template name="movieListTemplate">
   <view class='movie-list-container'>
     <view class='inner-container'>
@@ -11,7 +12,7 @@
       </view>
 
       <view class='movie-template-container'>
-      <block wx:for="{{movies}}" wx:for-item="movie">
+      <block wx:key="movieId" wx:for="{{movies}}" wx:for-item="movie">
         <template is="movieTemplate" data="{{...movie}}" />
       </block>
       </view>
