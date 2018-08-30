@@ -1,5 +1,5 @@
 // 使用相对路径
-var postData = require("../../data/post-data.js")
+var postData = require("../../data/post-data.js");
 
 Page({
 

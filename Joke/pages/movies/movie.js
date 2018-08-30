@@ -1,5 +1,4 @@
-var util = require("../../utils/utils.js")
-
+var util = require("../../utils/utils.js");
 var app = getApp();
 
 Page({
@@ -8,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    containerShow: true,
+    searchPanelShow: false,
+    searchText: ""
   },
 
   /**
@@ -16,7 +17,7 @@ Page({
    */
   onLoad: function (options) {
     // 粒度
-    var inTheaterUrl = app.globalData.doubanBase+  "v2/movie/in_theaters?start=1&count=3";
+    var inTheaterUrl = app.globalData.doubanBase+  "v2/movie/in_theaters?start=0&count=3";
     var comingSoonUrl = app.globalData.doubanBase + "/v2/movie/coming_soon?start=0&count=3";
     var top250Url = app.globalData.doubanBase +"/v2/movie/top250?start=0&count=3";
     
@@ -74,10 +75,46 @@ Page({
   },
 
   onMoreTap: function (event) {
-    console.log(event);
     var category = event.currentTarget.dataset.category;
     wx.navigateTo({
       url: 'movie-more/movie-more?category='+category,
+    });
+  },
+
+
+  onBindFocus: function() {
+    this.setData({
+      containerShow:false,
+      searchPanelShow:true,
+      searchResult:{}
+    });
+  },
+
+  onBindChange: function(event) {
+    // var text = event.detail.value;
+    // var searchUrl = app.globalData.doubanBase + "v2/movie/search?q=" + text;
+    // this.getMovieListData(searchUrl, "searchResult");
+  },
+
+  onBindBlur: function(event) {
+    var text = event.detail.value;
+    var searchUrl = app.globalData.doubanBase + "v2/movie/search?q=" + text;
+    this.getMovieListData(searchUrl, "searchResult");
+  },
+
+  cancel: function() {
+    this.setData({
+      containerShow: true,
+      searchPanelShow: false,
+      searchText: ""
+    });
+  },
+
+  onMovieTap: function(event) {
+
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + movieId,
     });
   },
 

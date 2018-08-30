@@ -1,0 +1,5 @@
+<!--pages/movies/movie-detail/movie-detail.wxml-->
+<view class='container'>
+<image class='head-img' mode='aspectFill' src='{{movie.movieImg}}'></image>
+
+</view>

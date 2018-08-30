@@ -4,7 +4,8 @@
     "pages/welcome/wecome",
     "pages/posts/post-detail/post-detail",
     "pages/movies/movie",
-    "pages/movies/movie-more/movie-more"
+    "pages/movies/movie-more/movie-more",
+    "pages/movies/movie-detail/movie-detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
@@ -13,6 +14,12 @@
     "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
     "enablePullDownRefresh": false
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
   },
   "tabBar": {
     "borderStyle": "white",

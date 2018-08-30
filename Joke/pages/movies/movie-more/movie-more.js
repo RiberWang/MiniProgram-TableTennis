@@ -1,6 +1,6 @@
 // pages/movies/movie-more/movie-more.js
-var util = require("../../../utils/utils.js")
-var app = getApp()
+var util = require("../../../utils/utils.js");
+var app = getApp();
 
 Page({
 
@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    requestUrl: "",
+    totalCount: 0,
+    isEmpty:true
   },
 
   /**
@@ -17,6 +19,9 @@ Page({
   onLoad: function(options) {
     var category = options.category;
     console.log(options);
+    wx.setBackgroundColor({
+      backgroundColor: "#DCDCDC"
+    });
     wx.setNavigationBarTitle({
       title: category,
     });
@@ -33,9 +38,32 @@ Page({
         dataUrl = app.globalData.doubanBase + "v2/movie/top250";
         break;
     }
+    this.data.requestUrl = dataUrl;
     console.log(dataUrl);
     util.http(dataUrl, this.callBack);
+    wx.showNavigationBarLoading();
+  },
 
+  // onScrolltoupper: function(event) {
+  //   var nextUrl = this.data.requestUrl;
+  //   this.data.isEmpty = true;
+  //   util.http(nextUrl, this.callBack);
+  // },
+  onPullDownRefresh: function() {
+    console.log("下拉刷新");
+    var nextUrl = this.data.requestUrl + "?start=0&count=20";
+    this.data.totalCount = 0;
+    this.data.movies = {};
+    this.data.isEmpty = true;
+    util.http(nextUrl, this.callBack);
+    wx.showNavigationBarLoading();
+  },
+
+  onReachBottom: function() {
+    console.log("加载更多。。。");
+    var nextUrl = this.data.requestUrl + "?start="+this.data.totalCount+"&count=20";
+    util.http(nextUrl, this.callBack);
+    wx.showNavigationBarLoading();
   },
 
   callBack: function (movieData) {
@@ -58,13 +86,23 @@ Page({
 
       movies.push(temp);
     }
+    var totalMovies = {};
+    if(this.data.isEmpty) {
+      totalMovies = movies;
+      this.data.isEmpty = false;
+    }
+    else {
+      totalMovies = {};
+      totalMovies = this.data.movies.concat(movies);
+    }
     this.setData({
-      movies: movies
+      movies: totalMovies
     });
 
-    console.log(movies);
+    this.data.totalCount += 20;
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -97,16 +135,16 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  // onPullDownRefresh: function() {
 
-  },
+  // },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  // onReachBottom: function() {
 
-  },
+  // },
 
   /**
    * 用户点击右上角分享

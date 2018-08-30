@@ -1,4 +1,4 @@
-var postsData = require("../../../data/post-data.js")
+var postsData = require("../../../data/post-data.js");
 var app = getApp();
 
 Page({
@@ -53,6 +53,13 @@ Page({
       app.globalData.g_currentPostId = that.data.currentPostId;
     });
     wx.onBackgroundAudioPause(function() {
+      that.setData({
+        isPlay: false
+      });
+      app.globalData.g_play = false;
+      app.globalData.g_currentPostId = null;
+    });
+    wx.onBackgroundAudioStop(function() {
       that.setData({
         isPlay: false
       });
