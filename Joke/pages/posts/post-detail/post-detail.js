@@ -46,25 +46,30 @@ Page({
   setMusicStatus: function() {
     var that = this;
     wx.onBackgroundAudioPlay(function() {
-      that.setData({
-        isPlay: true
-      });
+      if (app.globalData.g_currentPostId == that.data.currentPostId) {
+        that.setData({
+          isPlay: true
+        });
+      }
       app.globalData.g_play = true;
       app.globalData.g_currentPostId = that.data.currentPostId;
     });
     wx.onBackgroundAudioPause(function() {
-      that.setData({
-        isPlay: false
-      });
+      if (app.globalData.g_currentPostId == that.data.currentPostId) {
+        that.setData({
+          isPlay: false
+        });
+      }
+
       app.globalData.g_play = false;
-      app.globalData.g_currentPostId = null;
+      // app.globalData.g_currentPostId = null;
     });
     wx.onBackgroundAudioStop(function() {
       that.setData({
         isPlay: false
       });
       app.globalData.g_play = false;
-      app.globalData.g_currentPostId = null;
+      // app.globalData.g_currentPostId = null;
     });
   },
 
@@ -78,7 +83,7 @@ Page({
       this.setData({
         isPlay: false
       });
-      // this.data.isPlay = false;
+      app.globalData.g_play = false;
     } else {
       wx.playBackgroundAudio({
         dataUrl: postData.music.dataUrl,
@@ -88,6 +93,7 @@ Page({
       this.setData({
         isPlay: true
       });
+      app.globalData.g_play = true;
     }
   },
 

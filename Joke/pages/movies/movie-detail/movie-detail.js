@@ -1,6 +1,7 @@
 // pages/movies/movie-detail/movie-detail.js
 var app = getApp();
 var util = require("../../../utils/utils.js");
+// import {Movie} from '../class/Movie.js';
 
 Page({
 
@@ -18,11 +19,17 @@ Page({
     var movieId = options.id;
     var url = app.globalData.doubanBase + "v2/movie/subject/" + movieId;
     util.http(url, this.callBack);
-
+    // var newmovie = new Movie(url);
+    // var that = this;
+    // newmovie.getMovieData(function(movie) {
+    //   console.log(movie);
+    //     that.setData({
+    //       movie: movie
+    //     });
+    // });
   },
 
   callBack: function(data) {
-    console.log(data);
     if(!data) {
       return;
     }
