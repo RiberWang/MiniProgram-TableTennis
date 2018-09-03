@@ -1,6 +1,6 @@
 <!-- 注意引入template时(模板不是真正的模块化) 后面有个反斜杠 路径使用绝对路径是可以的 有可能在同一目录下 未知-->
 <!-- <import src="post-item/post-item-template.wxml" /> -->
-<import src="/pages/posts/post-item/post-item-template.wxml" />
+<import src="post-item/post-item-template.wxml" />
 
 <view>
   <swiper catchtap='onSwiperTap' vertical='{{false}}' class='banner' indicator-dots='true' autoplay='true' interval='1000'>
