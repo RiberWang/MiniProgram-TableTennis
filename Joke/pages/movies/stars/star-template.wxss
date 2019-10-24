@@ -24,4 +24,5 @@
 
 .star-score {
   color: #1f3463;
+  font-size: 26rpx;
 }
